@@ -13,7 +13,8 @@ even expose some interfaces for users.
 Simple wrap your component(s) or even a whole react app
 in `<StateSync>` wrapper component.
 
-For now api has two required props: *appId* and *stateId*, expect this to be changed.
+For now api has two required props: *appId* and *stateId*, **expect this to be changed**.
+
 `<StateSync appId="" stateId="">...</StateSync>`
 
 # Example

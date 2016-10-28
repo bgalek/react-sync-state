@@ -1,3 +1,5 @@
+# Project is under development, opened for contribution.
+
 # What's react-sync-state?
 Pure frontend solution for react state synchronization.
 

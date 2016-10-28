@@ -14,8 +14,8 @@ export default class App extends Component {
 
     render() {
         return (
-            <div className="App">
-                <p>synced input:</p>
+            <div className="App" style={{padding:40}}>
+                <p>synced component group:</p>
                 <StateSync appId="admin" stateId="names" initialState={this.state}>
                     {({state, onChange}) => (
                         <form>
@@ -26,6 +26,7 @@ export default class App extends Component {
                         </form>
                     )}
                 </StateSync>
+                <p>synced separably</p>
                 <SyncedInput />
             </div>
         );

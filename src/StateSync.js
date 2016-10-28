@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import StateRepository from './StateRepository'
+const credentials = require('../credentials.json');
+const firebase = require('firebase');
+firebase.initializeApp(credentials);
 
 export default class StateSync extends Component {
 
@@ -8,16 +11,21 @@ export default class StateSync extends Component {
         this.state = Object.assign({}, this.props.initialState);
         this._updateState = this._updateState.bind(this);
         this._stateChangeHandler = this._stateChangeHandler.bind(this);
-        this.stateRepository = new StateRepository({onChange: this._stateChangeHandler});
+        this.stateRepository = new StateRepository({
+            firebase: firebase,
+            appId: this.props.appId,
+            key: this.props.stateId,
+            onChange: this._stateChangeHandler
+        });
     }
 
     _stateChangeHandler(state) {
-        console.log('_stateChangeHandler', JSON.stringify(state));
-        this.setState(state);
+        if (state) {
+            this.setState(state);
+        }
     }
 
     _updateState(nextState) {
-        console.log('_updateState');
         const state = Object.assign({}, this.state, nextState);
         this.stateRepository.pushState(state);
     }
@@ -27,7 +35,7 @@ export default class StateSync extends Component {
             <div data-synchronized>
                 {this.props.children({
                     state: this.state,
-                    onChange: (state) =>  this._updateState(state)
+                    onChange: (state) => this._updateState(state)
                 })}
             </div>
         );

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import StateSync from './StateSync'
+import StateSync from './StateSync';
+import SyncedInput from './SyncedInput';
 
 export default class App extends Component {
 
@@ -7,26 +8,25 @@ export default class App extends Component {
         super(props);
         this.state = {
             firstName: 'Bartosz',
-            secondName: 'Galek',
-            age: 10,
-            company: 'MyCompany'
+            secondName: 'Gałek'
         }
     }
-
-    handleCompanyChange = (event) => this.setState({ company: event.target.value });
 
     render() {
         return (
             <div className="App">
                 <p>synced input:</p>
-                <StateSync initialState={this.state}>
-                    {({ state, onChange }) => (
+                <StateSync appId="admin" stateId="names" initialState={this.state}>
+                    {({state, onChange}) => (
                         <form>
-                            <input type="text" onChange={(event) => onChange({ firstName: event.target.value })} value={state.firstName} />
-                            <input type="text" onChange={(event) => onChange({ secondName: event.target.value })} value={state.secondName} />
+                            <input type="text" onChange={(event) => onChange({firstName: event.target.value})}
+                                   value={state.firstName}/>
+                            <input type="text" onChange={(event) => onChange({secondName: event.target.value})}
+                                   value={state.secondName}/>
                         </form>
                     )}
                 </StateSync>
+                <SyncedInput />
             </div>
         );
     }

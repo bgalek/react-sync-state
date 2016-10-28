@@ -1,16 +1,13 @@
-const firebase = require('firebase');
-const credentials = require('../credentials.json');
-
 export default class StateRepository {
     constructor(props) {
-        firebase.initializeApp(credentials);
-        this.db = firebase.database();
-        this.db.ref('/opbox-admin').on('child_added', state => {
+        this.resource = `/${props.appId}/${props.key}`;
+        this.db = props.firebase.database();
+        this.db.ref(this.resource).on('value', state => {
             props.onChange(state.val());
         });
     }
 
     pushState(state) {
-        firebase.database().ref('/opbox-admin/').push(state);
+        this.db.ref(this.resource).update(state);
     }
 }

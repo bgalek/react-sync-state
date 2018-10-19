@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import StateSync from './StateSync'
 
 export default class SyncedInput extends Component {
@@ -13,9 +13,9 @@ export default class SyncedInput extends Component {
     render() {
         return (
             <StateSync appId="admin" stateId="age" initialState={this.state}>
-                {({state, onChange}) => (
+                {({ state, onChange }) => (
                     <form>
-                        <input type="number" onChange={(event) => onChange({age: event.target.value})}
+                        <input type="number" onChange={(event) => onChange({ age: event.target.value })}
                                value={state.age}/>
                     </form>
                 )}

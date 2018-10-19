@@ -1,8 +1,16 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import StateRepository from './StateRepository'
-const credentials = require('../credentials.json');
+
 const firebase = require('firebase');
-firebase.initializeApp(credentials);
+
+firebase.initializeApp({
+    "apiKey": "",
+    "authDomain": "",
+    "databaseURL": "",
+    "projectId": "",
+    "storageBucket": "",
+    "messagingSenderId": ""
+});
 
 export default class StateSync extends Component {
 

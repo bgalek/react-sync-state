@@ -6,7 +6,7 @@
     "react-scripts": "2.0.5"
   },
   "dependencies": {
-    "firebase": "^5.5.5",
+    "firebase": "^10.9.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
   },
